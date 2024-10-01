@@ -1,4 +1,4 @@
-import { Box,  Icon,  Image, Input, InputGroup, InputLeftElement, Text, useMediaQuery} from '@chakra-ui/react'
+import { Box,  Icon,  Image, Input, InputGroup, InputLeftElement, Link, Text, useMediaQuery} from '@chakra-ui/react'
 import logo from '/logo.svg'
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from 'react';
@@ -25,11 +25,14 @@ export default function Navbar() {
     };
   }, []);
   return (
-    <div className={`${isScrolled && 'fixed' }  bg-white h-fit  w-full  px-2 pb-2  min-[1120px]:px-10 z-10`} >
+    <div className={`${isScrolled && 'fixed' }  bg-white h-fit  w-full  px-2  min-[1120px]:px-10 z-10`} >
 
-    <Box  className={`flex ${(isScrolled && isMinWidth1120) && ' fixed  top-0 left-0 bg-white  shadow-xl'}bg-white w-full  items-center justify-between py-2 px-4`} display={` ${(isScrolled && !isMinWidth1120) && ' none'}`}>
+    <Box  className={`flex ${(isScrolled && isMinWidth1120) && 'fixed bg-white  top-0 left-0  shadow-xl '}bg-white  w-full  items-center justify-between py-2 px-6 shadow-xl`} display={` ${(isScrolled && !isMinWidth1120) && ' none'}`}>
       {!isMinWidth1120 && <Icon as={HamburgerIcon} boxSize={8}/>}
+      <Link href=''>
+      
       <Image src={logo} alt="wayfair-logo"  className='h-auto w-28  min-[1120px]:w-48' />
+      </Link>
       <InputGroup width={'45%'} display={isMinWidth1120 ? 'block' : 'none'}>
     <InputLeftElement pointerEvents='none' >
       <SearchIcon color='gray.600' />
@@ -47,7 +50,7 @@ export default function Navbar() {
       display={{ base: 'block', md: 'inline-block' }} // Adjusts the display for small screens
     >
       <Box className='flex cursor-pointer w-fit  p-1 items-center gap-1'>
-      <svg  viewBox="2 2 24 24" className={`${isHovered && ''} w-6 min-[1120px]:w-8 `}><path d="M14 4.5a9.5 9.5 0 109.5 9.5A9.51 9.51 0 0014 4.5zM9.26 21.05v-2.17a3.37 3.37 0 013.36-3.36h2.74a3.37 3.37 0 013.36 3.36v2.19a8.47 8.47 0 01-9.48 0zM14 14.5a2.5 2.5 0 112.5-2.5 2.5 2.5 0 01-2.5 2.5zm5.73 5.76v-1.38a4.37 4.37 0 00-3.44-4.26A3.45 3.45 0 0017.5 12a3.5 3.5 0 00-7 0 3.45 3.45 0 001.21 2.62 4.37 4.37 0 00-3.44 4.26v1.38a8.5 8.5 0 1111.46 0z"></path></svg>
+      <svg  viewBox="2 2 24 24" className={`${isHovered && 'fill-[#7c189f]'} w-6 min-[1120px]:w-8 `}><path d="M14 4.5a9.5 9.5 0 109.5 9.5A9.51 9.51 0 0014 4.5zM9.26 21.05v-2.17a3.37 3.37 0 013.36-3.36h2.74a3.37 3.37 0 013.36 3.36v2.19a8.47 8.47 0 01-9.48 0zM14 14.5a2.5 2.5 0 112.5-2.5 2.5 2.5 0 01-2.5 2.5zm5.73 5.76v-1.38a4.37 4.37 0 00-3.44-4.26A3.45 3.45 0 0017.5 12a3.5 3.5 0 00-7 0 3.45 3.45 0 001.21 2.62 4.37 4.37 0 00-3.44 4.26v1.38a8.5 8.5 0 1111.46 0z"></path></svg>
 
         <Text className=' hidden min-[1120px]:block'>Sign In</Text>
       </Box>
