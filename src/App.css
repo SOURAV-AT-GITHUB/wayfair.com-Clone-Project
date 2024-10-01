@@ -1,0 +1,10 @@
+.hide-scrollbar{
+      scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar{
+      display: none;
+}
+.arrow:disabled{
+      opacity: 0.85;
+      cursor: not-allowed;
+}
