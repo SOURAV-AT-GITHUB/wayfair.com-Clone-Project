@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <div className={`${isScrolled && 'fixed' }  bg-white h-fit  w-full  px-2  min-[1120px]:px-10 z-10`} >
 
-    <Box  className={`flex ${(isScrolled && isMinWidth1120) && 'fixed bg-white  top-0 left-0  shadow-xl '}bg-white  w-full  items-center justify-between py-2 px-6 shadow-xl`} display={` ${(isScrolled && !isMinWidth1120) && ' none'}`}>
+    <Box  className={`flex ${(isScrolled && isMinWidth1120) && 'fixed bg-white  top-0 left-0  shadow-xl '}bg-white  w-full  items-center justify-between py-2 px-6`} display={` ${(isScrolled && !isMinWidth1120) && ' none'}`}>
       {!isMinWidth1120 && <Icon as={HamburgerIcon} boxSize={8}/>}
       <Link href=''>
       
