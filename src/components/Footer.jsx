@@ -30,11 +30,11 @@ export default function Footer() {
       <div className="block min-[640px]:flex p-6  justify-center gap-16">
          <div>
             <h4 className="font-bold text-lg mb-4">Be the first to know about our best deals!</h4>
-            <p className="text-[#7c189f] underline"><a href="">Privacy Policy</a></p>
+            <p className="text-primary underline"><a href="">Privacy Policy</a></p>
          </div>
          <div className=" flex w-fit my-2 m-auto min-[640px]:m-0">
             <input type="text" placeholder="Email Address" className=" border border-black  pl-4 rounded-l-xl w-52   min-[500px]:w-96 h-12 placeholder:text-black placeholder:font-medium"/>
-            <button className="bg-[#7c189f] text-white text-md  px-4  rounded-r-xl h-12 ">Submit</button>
+            <button className="bg-primary text-white text-md  px-4  rounded-r-xl h-12 ">Submit</button>
          </div>
       </div>
       </section>
@@ -51,11 +51,11 @@ export default function Footer() {
       {Object.entries(middleNavData).filter((_,i)=>i===2).map(e=>(
             <div key={e[0]}>
                    <h3 className="font-bold text-2xl">{e[0]}</h3>
-                   <button className="flex items-center gap-2  my-2 bg-[#7c189f] text-white p-3 px-5 rounded-full text-lg">
+                   <button className="flex items-center gap-2  my-2 bg-primary text-white p-3 px-5 rounded-full text-lg">
                          <svg  viewBox="2 2 24 24" className="h-6 fill-white"><path d="M18 14h-4v-4a.5.5 0 00-1 0v4.5a.5.5 0 00.5.5H18a.5.5 0 000-1z"></path><path d="M14 4.5a9.5 9.5 0 109.5 9.5A9.51 9.51 0 0014 4.5zm0 18a8.5 8.5 0 118.5-8.5 8.51 8.51 0 01-8.5 8.5z"></path></svg>
                   Quick Help</button>
-            <button className="flex items-center gap-2  my-2 text-[#7c189f] border border-[#7c189f] p-3 px-9  rounded-full text-lg">
-            <svg  viewBox="2 2 24 24" className="h-6 fill-[#7c189f]"><path d="M18.88 23h-.07C12.18 22 6 15.84 5 9.21a.47.47 0 01.13-.42l3.59-3.66A.52.52 0 019.11 5a.47.47 0 01.36.2l3.2 4.24a.5.5 0 01-.05.66l-1.73 1.68a7.21 7.21 0 005.36 5.37l1.64-1.76a.49.49 0 01.67-.06l4.24 3.17a.5.5 0 01.05.76l-3.62 3.62a.5.5 0 01-.35.12zM6 9.31A16.43 16.43 0 0018.71 22l3-3-3.43-2.58L16.8 18a.51.51 0 01-.44.16 8.22 8.22 0 01-6.5-6.51.49.49 0 01.14-.43l1.61-1.56L9 6.24z"></path></svg>
+            <button className="flex items-center gap-2  my-2 text-primary border border-primary p-3 px-9  rounded-full text-lg">
+            <svg  viewBox="2 2 24 24" className="h-6 fill-primary"><path d="M18.88 23h-.07C12.18 22 6 15.84 5 9.21a.47.47 0 01.13-.42l3.59-3.66A.52.52 0 019.11 5a.47.47 0 01.36.2l3.2 4.24a.5.5 0 01-.05.66l-1.73 1.68a7.21 7.21 0 005.36 5.37l1.64-1.76a.49.49 0 01.67-.06l4.24 3.17a.5.5 0 01.05.76l-3.62 3.62a.5.5 0 01-.35.12zM6 9.31A16.43 16.43 0 0018.71 22l3-3-3.43-2.58L16.8 18a.51.51 0 01-.44.16 8.22 8.22 0 01-6.5-6.51.49.49 0 01.14-.43l1.61-1.56L9 6.24z"></path></svg>
                   Call Us</button>
                    {Object.entries(e[1]).map(ele=>(
                         <Fragment key={ele[0]}>
@@ -91,5 +91,19 @@ export default function Footer() {
 </section>
     </div>
 
+  )
+}
+
+export  function SmallFooter() {
+  return (
+      <section className="mt-20">
+
+      <div className="block min-[640px]:flex gap-4 font-medium my-2">
+      <p className="hover:underline my-3 "><a href="">Terms of Use</a></p>
+      <p className="hover:underline my-3"><a href="">Privacy Policy</a></p>
+      <p className="hover:underline my-3"><a href="">Your Privacy Rights & Choices</a></p>
+</div>
+<p className="text-xs font-medium my-2">© 2002 - 2024 by Wayfair LLC, 4 Copley Place, 7th Floor, Boston, MA 02116</p>
+      </section>
   )
 }

@@ -8,3 +8,38 @@
       opacity: 0.85;
       cursor: not-allowed;
 }
+.input-container {
+    position: relative;
+}
+.email-input {
+    width: 25rem;
+    padding: 10px 10px 10px 5px; /* Adjust padding for space */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    border: 1px solid;
+}
+
+.email-input:focus {
+    border-color: #007bff; /* Change border color on focus */
+}
+
+.placeholder {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    transition: all 0.3s ease;
+    color: black;
+    background-color: #fff;
+    cursor:text;
+
+}
+
+/* Move the label up when focused */
+.input-container.focused .placeholder {
+    top: -10px; /* Adjust this value as needed */
+    left: 5px; /* Adjust this value as needed */
+    font-size: 12px; /* Smaller font size */
+    background-color: #fff;
+}
