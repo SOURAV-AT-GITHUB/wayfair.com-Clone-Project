@@ -14,6 +14,7 @@ import {
   useDisclosure,
   Collapse,
   Icon,
+  Spinner,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import shippingBadge from "/shipping-badge.svg";
@@ -45,6 +46,7 @@ export default function ProductCard({ product = template }) {
   const { isOpen: isSummaryCollapse, onToggle: onSummaryCollapse } =useDisclosure();
   const { isOpen: isReviewCollapse, onToggle: onReviewCollapse } =useDisclosure();
   const [quantity, setQuantity] = useState(1);
+  const [buttonState , setButtonState] = useState('Add to Cart')
   const handleButtonClick = (event) => {
     event.preventDefault();
     onOpen();
@@ -70,7 +72,14 @@ export default function ProductCard({ product = template }) {
   const handleFocus = () => setIsInputActive(true);
   const handleBlur = () => setIsInputActive(false);
   const dispatch = useDispatch()
-const handleAdd = ()=>{
+  const handleAdd = ()=>{
+setButtonState('Loading')
+setTimeout(()=>{
+  setButtonState("Added to Cart")
+  setTimeout(()=>{
+    setButtonState("Add to Cart")
+  },2000)
+},1000)
 dispatch({type:"ADD",payload:{product,quantity}})
 }
 
@@ -90,10 +99,10 @@ dispatch({type:"ADD",payload:{product,quantity}})
       onMouseLeave={() => setCardHovering(false)}
       className="card flex flex-col justify-between p-2  text-left border border-transparent hover:border-black max-w-[400px] rounded-lg  hover:bg-slate-50"
     >
-      <a href="" target="blank">
+      <a >
         <Box id="image-Box" className="relative ">
           <Box
-            className=" relative h-[400px] min-h-[200px]"
+            className=" relative min-[800px]:h-[400px] min-h-[200px]"
             onMouseEnter={() => setImageHovering(true)}
             onMouseLeave={() => setImageHovering(false)}
           >
@@ -127,7 +136,7 @@ dispatch({type:"ADD",payload:{product,quantity}})
             {isCardHovering && (
               <button
                 onClick={handleButtonClick}
-                className="absolute left-32 bottom-16 w-32  p-2 bg-white text-primary text-lg  border-2 border-primary rounded-full "
+                className="absolute min-[800px]:left-32 bottom-16 w-32  min-[800px]:p-2 bg-slate-400 min-[800px]:bg-white  text-primary text-lg  border-2 border-primary rounded-full "
               >
                 Quickview
               </button>
@@ -302,7 +311,7 @@ dispatch({type:"ADD",payload:{product,quantity}})
                 <button onClick={increaseQunatity} className="p-3 hover:bg-purple-100 disabled:opacity-50 disabled:cursor-not-allowed" disabled={quantity>=30}><Icon as={AddIcon}/></button>
               
               </Box>
-              <button onClick={handleAdd}  type="button" className="bg-primary text-white rounded-full w-44 hover:opacity-80">Add to Cart</button>
+              <button onClick={handleAdd}  type="button" className="bg-primary text-white rounded-full w-44 hover:opacity-80">{buttonState === 'Loading' ? <Spinner/> : buttonState}</button>
             </Box>
             <button className="mt-6  border-2 border-primary rounded-full  w-full h-12  flex justify-center items-center gap-4 hover:shadow-xl shadow-primary"><p className="text-2xl text-primary">Save</p> <img className="h-7"  src={emptyHeart} alt="empty-heart" /></button>
             <a href="" className="w-fit"><p className="mt-4 w-fit underline text-primary hover:no-underline">See Full Details</p></a>

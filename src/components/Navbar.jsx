@@ -1,4 +1,4 @@
-import { Box,  Icon,  Image, Input, InputGroup, InputLeftElement, Link, Text, useMediaQuery} from '@chakra-ui/react'
+import { Box,  Icon,  Image, Input, InputGroup, InputLeftElement, Text, useMediaQuery} from '@chakra-ui/react'
 import logo from '/logo.svg'
 import { HamburgerIcon, SearchIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from 'react';
@@ -10,7 +10,6 @@ export default function Navbar() {
       const [isScrolled, setIsScrolled] = useState(false);
       const [cartCount,setCartCount] = useState(0)
     const currentUser = useSelector(store=>store.auth)
-    console.log(currentUser);
     
   useEffect(() => {
     const handleScroll = () => {
@@ -23,8 +22,6 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -38,6 +35,7 @@ dispatch({type:"LOGOUT"})
 useEffect(()=>{
   let count = 0
   cart.forEach(element => count+=element.quantity);
+  
   setCartCount(count)
 },[cart])
   return (
@@ -134,7 +132,7 @@ useEffect(()=>{
 <Box className='flex p-2 hover:cursor-pointer hover:text-primary hover:fill-primary'>
   <Box className="relative">
 <svg className='w-6 min-[1120px]:w-8'  viewBox="2 2 24 24"  ><path d="M21 15.54a.51.51 0 00.49-.38l2-8a.51.51 0 00-.1-.43.49.49 0 00-.39-.19H8.28L8 4.9a.51.51 0 00-.49-.4H5a.5.5 0 000 1h2.05L9 15l-2.36 4.74a.53.53 0 000 .49.5.5 0 00.42.23H21a.5.5 0 00.5-.5.5.5 0 00-.5-.5H7.89l1.92-3.92zm1.34-8l-1.73 7H9.92l-1.43-7zM10 21a1 1 0 101 1 1 1 0 00-1-1zM18 21a1 1 0 101 1 1 1 0 00-1-1z"></path></svg>
-{cartCount>0 && <p className=' absolute bg-purple-300  text-primary rounded-full px-1 top-0 right-0 text-xs'>{cartCount}</p>}
+{cartCount>0 && currentUser.isLoggedIn &&  <p className=' absolute bg-purple-300  text-primary rounded-full px-1 top-0 right-0 text-xs'>{cartCount}</p>}
   </Box>
 <Text className=' hidden min-[1120px]:block'>Cart</Text>
 </Box>

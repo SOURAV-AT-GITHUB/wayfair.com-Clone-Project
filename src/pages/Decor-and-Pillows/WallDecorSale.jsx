@@ -5,7 +5,7 @@ import ProductCard from "../../components/ProductCard";
 export default function WallDecorSale() {
   const [sort, setSort] = useState("Recommended");
   return (
-    <div className="p-4 w-full min-[960px]:w-10/12">
+    <div className="p-4 w-full ">
       <section id="top" className="flex justify-between p-4">
         <div>
           <p>Décor & Pillows / Wall Décor / Wall Décor Sale</p>

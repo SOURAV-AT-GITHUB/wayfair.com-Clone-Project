@@ -52,7 +52,8 @@ switch(action.type){
       }
       case 'LOGOUT' :{ 
             localStorage.setItem("current_user",JSON.stringify({}))
-            return state = {...authState}}
+            return  {...authState}
+      }
       default : return state
 }
 
@@ -72,6 +73,16 @@ switch(action.type){
                   localStorage.setItem("cart",JSON.stringify(updatedCart))
                   return [...updatedCart]
             }   
+      }
+      case 'REMOVE' : {
+            let updatedCart =  state.filter(element=>element.title !== action.payload.title)
+            localStorage.setItem("cart",JSON.stringify(updatedCart))
+            return [...updatedCart]
+      }
+      case "UPDATE" : {
+            let updatedCart = state.map(product=> product.title == action.payload.title ? {...product, quantity : action.payload.quantity} : product)
+            localStorage.setItem("cart",JSON.stringify(updatedCart))
+            return [...updatedCart]
       }
       default : return state
 }
